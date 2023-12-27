@@ -5,3 +5,5 @@ export type TAstValue = string | ParseResult<File> | { [key: string]: unknown };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type TObject = { [key: string]: any };
+
+export type TFrameworks = 'next' | 'react';

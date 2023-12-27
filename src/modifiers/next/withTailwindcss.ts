@@ -5,7 +5,7 @@ import type { File } from '@babel/types';
 
 import { TAstValue, TObject } from 'types';
 
-const tailwindFiles = [
+export const tailwindFiles = [
   'postcss.config.js',
   'tailwind.config.js',
   'app/globals.css',
@@ -36,7 +36,6 @@ export function withTailwindcss(baseAstMap: Map<string, TAstValue>, fullAstMap: 
         [], t.stringLiteral(globalCssLocation)
       )
     );
-    console.log('unshifted', appLayout.program.body);
   }
 
   tailwindFiles.forEach(file => {

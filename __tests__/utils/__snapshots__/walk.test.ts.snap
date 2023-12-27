@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`utils/walk walk through fixtures 1`] = `
+[
+  ".gitignore",
+  "app/globals.css",
+  "app/layout.jsx",
+  "app/page.jsx",
+  "jsconfig.json",
+  "next.config.js",
+  "package.json",
+  "postcss.config.js",
+  "tailwind.config.js",
+]
+`;

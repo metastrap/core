@@ -4,4 +4,4 @@ A library for bootstrapping projects of various frameworks with configurable fea
 
 ## Docs
 
-Please check [dev](/docs/dev-notes) for code explanations.
+Please check [dev](/docs/dev-notes.md) for code explanations.
