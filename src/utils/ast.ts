@@ -3,7 +3,7 @@ import generate from '@babel/generator';
 
 import type { File } from '@babel/types';
 
-import { TAstValue } from '../../types';
+import { TAstValue } from 'types';
 import logger from './logger';
 
 enum EFileFeature {

@@ -1,4 +1,4 @@
-import index from '../src';
+import index from '@/index';
 
 describe('index', () => {
   test('print text', () => {
