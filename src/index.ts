@@ -1,10 +1,12 @@
+/* eslint-disable no-underscore-dangle */
 import {
   EFrameworks, TAstMap, TOptions, TROAstMap,
 } from 'types';
 import { saveAs } from 'file-saver';
 import type JSZip from 'jszip';
 
-import { baseFiles } from './modifiers';
+// eslint-disable-next-line import/no-named-default
+import { default as rootModifiers, baseFiles } from './modifiers';
 import { pack, setBaseProject } from './project';
 import { print } from './utils/ast';
 
@@ -22,7 +24,7 @@ export default class Metastrap<T extends EFrameworks> {
 
   private options: TOptions<T>;
 
-  private zip: JSZip;
+  private _zip: JSZip;
 
   private downloadFileName: string;
 
@@ -40,12 +42,12 @@ export default class Metastrap<T extends EFrameworks> {
     /* modify the AST / content of the project */
     Object.entries(this.options.features).forEach(([feature, enabled]) => {
       if (enabled) {
-        this.options.features[feature]?.call(this, this.project, this.fullProject);
+        rootModifiers[this.framework][feature](this.project, this.fullProject);
       }
     });
 
     /* write the modified project to zip for download by client */
-    this.zip = pack(
+    this._zip = pack(
       print(this.project),
     );
 
@@ -60,8 +62,12 @@ export default class Metastrap<T extends EFrameworks> {
       this.downloadFileName.endsWith('.zip')
         ? '' : '.zip'
     }`;
-    if (this.zip) {
-      saveAs(this.zip, fileName);
+    if (this._zip) {
+      saveAs(this._zip, fileName);
     }
+  }
+
+  get zip() {
+    return this._zip;
   }
 }

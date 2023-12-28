@@ -4,7 +4,9 @@ import * as t from '@babel/types';
 
 import type { File } from '@babel/types';
 
-import { TAstValue, TObject, TROAstMap } from 'types';
+import {
+  TAstMap, TObject, TROAstMap,
+} from 'types';
 
 export const tailwindFiles = [
   'postcss.config.js',
@@ -13,7 +15,7 @@ export const tailwindFiles = [
 ];
 
 export function withTailwindcss(
-  baseAstMap: Map<string, TAstValue>,
+  baseAstMap: TAstMap,
   fullAstMap: TROAstMap,
 ) {
   /* package.json */
@@ -45,7 +47,7 @@ export function withTailwindcss(
   });
 }
 
-export function undoTailwindcss(astMap: Map<string, TAstValue>) {
+export function undoTailwindcss(astMap: TAstMap) {
   /* package.json */
   const pkg = astMap.get('package.json') as TObject;
   delete pkg.devDependencies.tailwindcss;

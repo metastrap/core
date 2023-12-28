@@ -20,7 +20,7 @@ interface ICommonOptions {
   downloadFileName: string;
 }
 
-interface INextOptions extends ICommonOptions {
+export interface INextOptions extends ICommonOptions {
   features: {
     withTailwindcss: boolean;
   }

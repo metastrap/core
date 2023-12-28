@@ -1,3 +1,5 @@
+import { withTailwindcss } from './withTailwindcss';
+
 /* browser */
 export const baseFiles = [
   '.gitignore',
@@ -8,4 +10,6 @@ export const baseFiles = [
   'package.json',
 ];
 
-export * as tailwindcssModifier from './withTailwindcss';
+export const modifiers = {
+  withTailwindcss,
+};
