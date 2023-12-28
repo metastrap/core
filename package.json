@@ -1,9 +1,12 @@
 {
-  "name": "nextjs-bootstrapper",
+  "name": "@metastrap/core",
   "version": "1.0.0",
   "description": "A library for bootstrapping projects of various frameworks with configurable features and options.",
   "main": "./dist/index.js",
-  "repository": "https://github.com/itzsrikanth/nextjs-bootstrapper.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metastrap/core.git"
+  },
   "author": "Srikanth Sharma <snow.650@gmail.com>",
   "license": "MIT",
   "devDependencies": {
@@ -31,7 +34,8 @@
   ],
   "scripts": {
     "build": "yarn tsup",
-    "test": "yarn jest"
+    "test": "yarn jest",
+    "publish": "npm publish --access public"
   },
   "volta": {
     "node": "20.10.0",
@@ -43,5 +47,13 @@
     "@babel/types": "^7.23.6",
     "file-saver": "^2.0.5",
     "jszip": "^3.10.1"
+  },
+  "types": "./dist/index.d.ts",
+  "bugs": {
+    "url": "https://github.com/metastrap/core/issues"
+  },
+  "homepage": "https://github.com/metastrap/core#readme",
+  "directories": {
+    "doc": "docs"
   }
 }
