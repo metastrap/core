@@ -40,6 +40,8 @@
   "dependencies": {
     "@babel/generator": "^7.23.6",
     "@babel/parser": "^7.23.6",
-    "@babel/types": "^7.23.6"
+    "@babel/types": "^7.23.6",
+    "file-saver": "^2.0.5",
+    "jszip": "^3.10.1"
   }
 }
