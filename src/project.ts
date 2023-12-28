@@ -1,6 +1,7 @@
+/* browser */
 import JSZip from 'jszip';
 
-import type { TAstValue } from 'types/index';
+import type { TAstValue, TROAstMap } from 'types/index';
 
 export function pack(data: Map<string, string>): JSZip {
   const zip = new JSZip();
@@ -11,7 +12,7 @@ export function pack(data: Map<string, string>): JSZip {
 }
 
 export function setBaseProject(
-  fullProject: Map<string, TAstValue>,
+  fullProject: TROAstMap,
   baseFiles: string[],
 ): Map<string, TAstValue> {
   const baseProject = new Map<string, TAstValue>();

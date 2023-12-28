@@ -1,3 +1,4 @@
+/* browser */
 export const baseFiles = [
   '.gitignore',
   'app/layout.jsx',

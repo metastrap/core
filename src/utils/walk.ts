@@ -1,3 +1,4 @@
+/* node */
 /* https://gist.github.com/lovasoa/8691344?permalink_comment_id=2927279#gistcomment-2927279 */
 import { promises as fs } from 'fs';
 import path from 'path';

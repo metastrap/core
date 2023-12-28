@@ -1,3 +1,4 @@
+/* browser */
 import { ParseResult, ParserPlugin, parse } from '@babel/parser';
 import generate from '@babel/generator';
 
@@ -24,7 +25,6 @@ export function convertTextToAst(
     const babelParsePlugins: ParserPlugin[] = ['classProperties'];
 
     let result: TAstValue = content;
-    // eslint-disable-next-line default-case
     switch (extname) {
       case 'js':
         featureFlag |= EFileFeature.JAVASCRIPT;
