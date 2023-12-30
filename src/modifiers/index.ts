@@ -1,5 +1,6 @@
 /* browser */
-import { EFrameworks, INextOptions } from 'types';
+import { INextOptions } from 'types';
+import { EFrameworks } from '@/constants/enum';
 import { baseFiles as nextBaseFiles, modifiers as nextModifiers } from './next';
 
 // eslint-disable-next-line import/prefer-default-export

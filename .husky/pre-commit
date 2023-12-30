@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# build is taken care in pre-publish
+
+yarn lint:fix
+yarn test

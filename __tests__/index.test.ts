@@ -1,20 +1,22 @@
 import { saveAs } from 'file-saver';
-import fixtures from '@/fixtures';
 import Metastrap from '@/index';
-import { EFrameworks, TOptions, TROAstMap } from 'types';
-import { convertTextToAst } from '@/utils/ast';
+import { TOptions } from 'types';
+import { EFrameworks } from '@/constants/enum';
 import { baseFiles } from '@/modifiers';
 import { tailwindFiles } from '@/modifiers/next/withTailwindcss';
+import { readFixture } from 'testUtils/read';
+import { pack } from '@/project';
+import type JSZip from 'jszip';
 
-let fullProject: TROAstMap;
+let zip: JSZip;
 let nextOptions: TOptions<EFrameworks.next>;
 
 jest.spyOn(saveAs, 'saveAs').mockImplementation(() => true);
 
 describe('metastrap class', () => {
   beforeAll(async () => {
-    fullProject = convertTextToAst(
-      await fixtures(EFrameworks.next),
+    zip = pack(
+      await readFixture(EFrameworks.next),
     );
     nextOptions = {
       downloadFileName: 'nextjs.zip',
@@ -24,13 +26,13 @@ describe('metastrap class', () => {
     };
   });
 
-  test('main class transforms into correct zip', () => {
-    const ms = new Metastrap(
-      fullProject,
+  test('main class transforms into correct zip', async () => {
+    const ms = await (new Metastrap(
+      zip,
       EFrameworks.next,
       nextOptions,
-    ).run();
-    ms.getZip();
+    )).run();
+    ms.downloadZip();
     expect(saveAs)
       .toHaveBeenCalledWith(
         expect.anything(),
@@ -38,10 +40,11 @@ describe('metastrap class', () => {
       );
     expect(
       Object.keys(ms.zip.files)
-        .filter((file) => !file.endsWith('/')),
+        .filter((file) => !file.endsWith('/'))
+        .sort(),
     ).toStrictEqual([
       ...baseFiles[EFrameworks.next],
       ...tailwindFiles,
-    ]);
+    ].sort());
   });
 });

@@ -5,5 +5,6 @@ module.exports = {
   moduleNameMapper: {
     '@/(.*)$': '<rootDir>/src/$1',
     '^types(.*)$': '<rootDir>/types$1',
+    '^testUtils(.*)$': '<rootDir>/testUtils$1',
   },
 };

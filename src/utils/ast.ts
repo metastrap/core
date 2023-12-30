@@ -4,7 +4,7 @@ import generate from '@babel/generator';
 
 import type { File } from '@babel/types';
 
-import { TAstValue } from 'types';
+import { TAstMap, TAstValue } from 'types';
 import logger from './logger';
 
 enum EFileFeature {
@@ -16,7 +16,7 @@ enum EFileFeature {
 
 export function convertTextToAst(
   fileContentMap: Map<string, string>,
-): Map<string, TAstValue> {
+): TAstMap {
   const resultMap = new Map<string, TAstValue>();
 
   fileContentMap.forEach((content, file) => {

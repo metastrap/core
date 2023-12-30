@@ -1,19 +1,22 @@
 /* eslint-disable no-underscore-dangle */
-import {
-  EFrameworks, TAstMap, TOptions, TROAstMap,
-} from 'types';
 import { saveAs } from 'file-saver';
 import type JSZip from 'jszip';
+import {
+  TAstMap, TOptions, TROAstMap,
+} from 'types';
+import { EFrameworks } from '@/constants/enum';
 
 // eslint-disable-next-line import/no-named-default
 import { default as rootModifiers, baseFiles } from './modifiers';
 import { pack, setBaseProject } from './project';
-import { print } from './utils/ast';
+import { convertTextToAst, print } from './utils/ast';
+import readZipToMap from './utils/read';
 
 export * as modifiers from './modifiers';
 export * as utils from './utils';
 export * as types from 'types';
 export * as project from './project';
+export * as enums from './constants/enum';
 
 export default class Metastrap<T extends EFrameworks> {
   private fullProject: TROAstMap;
@@ -28,14 +31,18 @@ export default class Metastrap<T extends EFrameworks> {
 
   private downloadFileName: string;
 
-  constructor(fullProject: TROAstMap, framework: T, options: TOptions<T>) {
+  constructor(zip: JSZip, framework: T, options: TOptions<T>) {
+    this._zip = zip;
     this.framework = framework;
     this.options = options;
-    this.fullProject = fullProject;
     this.downloadFileName = options.downloadFileName ?? 'project.zip';
   }
 
-  public run() {
+  public async run() {
+    /* extract zip contents into AST */
+    this.fullProject = convertTextToAst(
+      await readZipToMap(this._zip),
+    );
     /* set the base project */
     this.project = setBaseProject(this.fullProject, baseFiles[this.framework]);
 
@@ -55,7 +62,7 @@ export default class Metastrap<T extends EFrameworks> {
     return this;
   }
 
-  public getZip() {
+  public downloadZip() {
     const fileName = `${
       this.downloadFileName
     }${

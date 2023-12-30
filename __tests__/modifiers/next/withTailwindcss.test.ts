@@ -1,10 +1,10 @@
 import path from 'node:path';
 import { TAstValue } from 'types/index';
 import { baseFiles } from '@/modifiers/next';
-import { readFilesToMap } from '@/utils/walk';
 import { convertTextToAst } from '@/utils/ast';
 import { setBaseProject } from '@/project';
 import { withTailwindcss, tailwindFiles } from '@/modifiers/next/withTailwindcss';
+import { readFilesToMap } from 'testUtils/read';
 
 let baseAsTree: Map<string, TAstValue>; let
   fullProject: Map<string, TAstValue>;

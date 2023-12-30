@@ -2,26 +2,17 @@ import { ParseResult } from '@babel/parser';
 import * as t from '@babel/types';
 import type { File } from '@babel/types';
 import { convertTextToAst, print } from '@/utils/ast';
-
-const textMap = new Map([
-  // eslint-disable-next-line no-template-curly-in-string
-  ['index.ts', 'export default function index(name: string): string { return `Hello, ${name}`; }'],
-  ['package.json', '{"name": "test"}'],
-  ['app/layout.tsx', 'export default function Layout({children}:{children:React.ReactNode}) { return <div>{children}</div>; }'],
-  ['app/app.jsx', 'export default function Layout() { return <div>Main</div>; }'],
-  ['util/index.js', 'export default function index() { return "Hello World"; }'],
-  ['styles/globals.css', 'body { margin: 0; }'],
-]);
+import mock from 'testUtils/mock';
 
 describe('utils/ast', () => {
   test('ast conversion of files in project', () => {
     expect(
-      convertTextToAst(textMap),
+      convertTextToAst(mock),
     ).toMatchSnapshot();
   });
 
   test('convert back ast to text', () => {
-    const asTree = convertTextToAst(textMap);
+    const asTree = convertTextToAst(mock);
     (asTree.get('app/app.jsx') as ParseResult<File>)?.program.body.unshift(
       t.importDeclaration([], t.stringLiteral('./globals.css')),
     );

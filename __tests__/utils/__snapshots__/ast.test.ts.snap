@@ -341,6 +341,10 @@ Map {
   "package.json" => {
     "name": "test",
   },
+  ".gitignore" => "dist
+build
+node_modules
+",
   "app/layout.tsx" => Node {
     "comments": [],
     "end": 103,
@@ -1348,6 +1352,10 @@ Map {
   return \`Hello, \${name}\`;
 }",
   "package.json" => "{"name":"test"}",
+  ".gitignore" => "dist
+build
+node_modules
+",
   "app/layout.tsx" => "export default function Layout({
   children
 }: {
