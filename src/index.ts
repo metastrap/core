@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import { saveAs } from 'file-saver';
-import type JSZip from 'jszip';
+import JSZip from 'jszip';
 import {
   TAstMap, TOptions, TROAstMap,
 } from 'types';
@@ -62,7 +62,7 @@ export default class Metastrap<T extends EFrameworks> {
     return this;
   }
 
-  public downloadZip() {
+  public async downloadZip() {
     const fileName = `${
       this.downloadFileName
     }${
@@ -70,7 +70,10 @@ export default class Metastrap<T extends EFrameworks> {
         ? '' : '.zip'
     }`;
     if (this._zip) {
-      saveAs(this._zip, fileName);
+      saveAs(
+        await this._zip.generateAsync({ type: 'blob' }),
+        fileName,
+      );
     }
   }
 

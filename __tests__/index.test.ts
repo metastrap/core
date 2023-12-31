@@ -32,7 +32,7 @@ describe('metastrap class', () => {
       EFrameworks.next,
       nextOptions,
     )).run();
-    ms.downloadZip();
+    await ms.downloadZip();
     expect(saveAs)
       .toHaveBeenCalledWith(
         expect.anything(),
