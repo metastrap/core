@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`modifiers/next/withWindi withWindi 1`] = `
+"const WindiCSSWebpackPlugin = require("windicss-webpack-plugin")();
+const nextConfig = {
+  webpack: config => {
+    config.plugins.push(new WindiCSSWebpackPlugin());
+    return config;
+  }
+};
+module.exports = nextConfig;"
+`;
+
+exports[`modifiers/next/withWindi withWindi 2`] = `
+"import "windi.css";
+export default function RootLayout({
+  children
+}) {
+  return <html lang="en">
+      <body>{children}</body>
+    </html>;
+}"
+`;

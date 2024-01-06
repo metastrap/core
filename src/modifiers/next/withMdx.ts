@@ -15,8 +15,6 @@ export default function withMdx(
   baseAstMap: TAstMap,
   fullAstMap: TROAstMap,
 ) {
-  // eslint-disable-next-line no-debugger
-  debugger;
   /* package.json */
   const pkg = baseAstMap.get('package.json') as TObject;
   pkg.devDependencies = {

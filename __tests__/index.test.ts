@@ -23,6 +23,7 @@ describe('metastrap class', () => {
       features: {
         withTailwindcss: true,
         withMdx: false,
+        withWindi: false,
       },
     };
   });

@@ -20,6 +20,7 @@ export interface INextOptions extends ICommonOptions {
   features: {
     withTailwindcss: boolean;
     withMdx: boolean;
+    withWindi: boolean;
   }
 }
 
