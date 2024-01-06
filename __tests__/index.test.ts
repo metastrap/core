@@ -22,6 +22,7 @@ describe('metastrap class', () => {
       downloadFileName: 'nextjs.zip',
       features: {
         withTailwindcss: true,
+        withMdx: false,
       },
     };
   });

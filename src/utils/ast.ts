@@ -78,7 +78,7 @@ export function print(ast: Map<string, TAstValue>): Map<string, string> {
     }
     if (typeof astValue === 'object') {
       try {
-        resultMap.set(file, JSON.stringify(astValue));
+        resultMap.set(file, JSON.stringify(astValue, null, 2));
       } catch (e) {
         resultMap.set(file, astValue.toString?.() || '');
       }

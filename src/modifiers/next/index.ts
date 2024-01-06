@@ -1,4 +1,5 @@
 import { withTailwindcss } from './withTailwindcss';
+import withMdx from './withMdx';
 
 /* browser */
 export const baseFiles = [
@@ -12,4 +13,5 @@ export const baseFiles = [
 
 export const modifiers = {
   withTailwindcss,
+  withMdx,
 };

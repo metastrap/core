@@ -1351,7 +1351,9 @@ Map {
   "index.ts" => "export default function index(name: string): string {
   return \`Hello, \${name}\`;
 }",
-  "package.json" => "{"name":"test"}",
+  "package.json" => "{
+  "name": "test"
+}",
   ".gitignore" => "dist
 build
 node_modules

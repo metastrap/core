@@ -39,5 +39,6 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['error'],
     'default-case': 'off',
     'prefer-default-export': 'off',
+    'no-use-before-define': 'off',
   },
 };
