@@ -21,8 +21,9 @@ describe('metastrap class', () => {
     nextOptions = {
       downloadFileName: 'nextjs.zip',
       features: {
-        withTailwindcss: true,
         withMdx: false,
+        withTailwindcss: true,
+        withTurbopack: false,
         withWindi: false,
       },
     };
