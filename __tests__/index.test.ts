@@ -25,6 +25,7 @@ describe('metastrap class', () => {
         withTailwindcss: true,
         withTurbopack: false,
         withWindi: false,
+        withVitest: false,
       },
     };
   });

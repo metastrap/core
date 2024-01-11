@@ -1,5 +1,5 @@
 export default function Home() {
   return (
-    <p>hello</p>
+    <h1 role='heading'>Hello</h1>
   );
 }

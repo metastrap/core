@@ -21,6 +21,7 @@ export interface INextOptions extends ICommonOptions {
     withMdx: boolean;
     withTailwindcss: boolean;
     withTurbopack: boolean;
+    withVitest: boolean;
     withWindi: boolean;
   }
 }

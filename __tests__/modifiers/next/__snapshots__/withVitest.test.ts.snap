@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`modifiers/next/withVitest contains required devDependencies 1`] = `
+"{
+  "name": "hello",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "react": "^18",
+    "react-dom": "^18",
+    "next": "14.0.4"
+  },
+  "devDependencies": {
+    "@testing-library/react": "14.1.2",
+    "@vitejs/plugin-react": "^4.2.1",
+    "vitest": "1.0.4",
+    "jsdom": "^23.0.1"
+  }
+}"
+`;

@@ -7,4 +7,8 @@ module.exports = {
     '^types(.*)$': '<rootDir>/types$1',
     '^testUtils(.*)$': '<rootDir>/testUtils$1',
   },
+  modulePathIgnorePatterns: [
+    '<rootDir>/fixtures/',
+    '<rootDir>/dist/',
+  ],
 };

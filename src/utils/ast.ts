@@ -1,10 +1,9 @@
-/* browser */
 import { ParseResult, ParserPlugin, parse } from '@babel/parser';
 import generate from '@babel/generator';
 
 import type { File } from '@babel/types';
 
-import { TAstMap, TAstValue } from 'types';
+import { TAstMap, TAstValue, TROAstMap } from 'types';
 import logger from './logger';
 
 enum EFileFeature {
@@ -85,4 +84,14 @@ export function print(ast: Map<string, TAstValue>): Map<string, string> {
     }
   });
   return resultMap;
+}
+
+export function addToBaseAst(
+  baseAstMap: TAstMap,
+  fileList: string[],
+  fullAstMap: TROAstMap,
+): void {
+  fileList.forEach((fileorDir) => {
+    baseAstMap.set(fileorDir, fullAstMap.get(fileorDir) || '');
+  });
 }
