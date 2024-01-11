@@ -40,5 +40,6 @@ module.exports = {
     'default-case': 'off',
     'prefer-default-export': 'off',
     'no-use-before-define': 'off',
+    'no-plusplus': 'off',
   },
 };

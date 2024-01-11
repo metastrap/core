@@ -9,7 +9,8 @@ exports[`modifiers/next/withVitest contains required devDependencies 1`] = `
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "vitest"
   },
   "dependencies": {
     "react": "^18",

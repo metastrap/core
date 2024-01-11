@@ -4,6 +4,8 @@ import {
   TROAstMap,
 } from 'types';
 
+export const NAMESPACE = 'vitest';
+
 export const vitestFiles = [
   'vitest/__tests__/components/counter.test.jsx',
   'vitest/__tests__/utils/add.test.js',
@@ -27,5 +29,18 @@ export default function withVitest(
     jsdom: '^23.0.1',
   };
 
+  pkg.scripts = {
+    ...pkg.scripts || {},
+    test: 'vitest',
+  };
+
   addToBaseAst(baseAstMap, vitestFiles, fullAstMap);
+
+  /* Rename files since `vitest/` was added for namespacing */
+  for (let i = 0; i < 3; i++) {
+    const oldKey = vitestFiles[i];
+    const newKey = oldKey.replace(`${NAMESPACE}/`, '');
+    baseAstMap.set(newKey, baseAstMap.get(oldKey) as TObject);
+    baseAstMap.delete(oldKey);
+  }
 }
