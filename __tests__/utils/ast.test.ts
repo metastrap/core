@@ -1,7 +1,9 @@
 import { ParseResult } from '@babel/parser';
 import * as t from '@babel/types';
 import type { File } from '@babel/types';
-import { convertTextToAst, print, addToBaseAst } from '@/utils/ast';
+import {
+  convertTextToAst, print, addToBaseAst, addCssImportToFile,
+} from '@/utils/ast';
 import mock from 'testUtils/mock';
 import { TAstValue } from 'types/index';
 
@@ -53,5 +55,32 @@ describe('addToBaseAst', () => {
     await addToBaseAst(baseAstMap, ['file1.js', 'file1.js'], fullAstMap);
 
     expect(fullAstMap.get('file1.js')).toBeDefined();
+  });
+});
+
+describe('addCssImportToFile', () => {
+  test('should add CSS import to the file AST', () => {
+    const fileAst: ParseResult<File> = {
+      type: 'File',
+      program: {
+        type: 'Program',
+        sourceType: 'module',
+        body: [],
+        directives: [],
+        sourceFile: '',
+      },
+      comments: [],
+      tokens: [],
+      errors: [],
+    };
+
+    const cssLocation = './globals.css';
+
+    addCssImportToFile(fileAst, cssLocation);
+
+    expect(fileAst.program.body).toEqual([
+      t.importDeclaration([], t.stringLiteral(cssLocation)),
+    ]);
+    expect(fileAst.program).toMatchSnapshot();
   });
 });

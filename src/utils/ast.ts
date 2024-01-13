@@ -1,5 +1,6 @@
 import { ParseResult, ParserPlugin, parse } from '@babel/parser';
 import generate from '@babel/generator';
+import * as t from '@babel/types';
 
 import type { File } from '@babel/types';
 
@@ -94,4 +95,18 @@ export function addToBaseAst(
   fileList.forEach((fileorDir) => {
     baseAstMap.set(fileorDir, fullAstMap.get(fileorDir) || '');
   });
+}
+
+export function addCssImportToFile(file: ParseResult<File>, cssLocation: string) {
+  const importNodeIndex = file.program
+    .body
+    .findIndex(
+      (node) => node.type === 'ImportDeclaration'
+          && node.source.value === cssLocation,
+    );
+  if (!~importNodeIndex) {
+    file.program.body.unshift(
+      t.importDeclaration([], t.stringLiteral(cssLocation)),
+    );
+  }
 }

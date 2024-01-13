@@ -1,5 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`addCssImportToFile should add CSS import to the file AST 1`] = `
+{
+  "body": [
+    {
+      "source": {
+        "type": "StringLiteral",
+        "value": "./globals.css",
+      },
+      "specifiers": [],
+      "type": "ImportDeclaration",
+    },
+  ],
+  "directives": [],
+  "sourceFile": "",
+  "sourceType": "module",
+  "type": "Program",
+}
+`;
+
 exports[`utils/ast ast conversion of files in project 1`] = `
 Map {
   "index.ts" => Node {

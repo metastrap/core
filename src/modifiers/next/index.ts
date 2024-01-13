@@ -1,5 +1,6 @@
 import { withTailwindcss } from './withTailwindcss';
 import withMdx from './withMdx';
+import withReactBootstrap from './withReactBootstrap';
 import withWindi from './withWindi';
 import withTurbopack from './withTurbopack';
 import withVitest from './withVitest';
@@ -16,6 +17,7 @@ export const baseFiles = [
 
 export const modifiers = {
   withMdx,
+  withReactBootstrap,
   withTailwindcss,
   withTurbopack,
   withVitest,

@@ -1,6 +1,6 @@
 /* browser */
+import { addCssImportToFile } from '@/utils/ast';
 import { ParseResult } from '@babel/parser';
-import * as t from '@babel/types';
 
 import type { File } from '@babel/types';
 
@@ -29,18 +29,7 @@ export function withTailwindcss(
   };
 
   const appLayout = baseAstMap.get('app/layout.jsx') as ParseResult<File>;
-  const globalCssLocation = './globals.css';
-  const importNodeIndex = appLayout.program
-    .body
-    .findIndex(
-      (node) => node.type === 'ImportDeclaration'
-          && node.source.value === globalCssLocation,
-    );
-  if (!~importNodeIndex) {
-    appLayout.program.body.unshift(
-      t.importDeclaration([], t.stringLiteral(globalCssLocation)),
-    );
-  }
+  addCssImportToFile(appLayout, './globals.css');
 
   tailwindFiles.forEach((file) => {
     baseAstMap.set(file, fullAstMap.get(file) || '');

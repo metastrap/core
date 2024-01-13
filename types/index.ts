@@ -19,6 +19,7 @@ export interface ICommonOptions {
 export interface INextOptions extends ICommonOptions {
   features: {
     withMdx: boolean;
+    withReactBootstrap: boolean;
     withTailwindcss: boolean;
     withTurbopack: boolean;
     withVitest: boolean;
