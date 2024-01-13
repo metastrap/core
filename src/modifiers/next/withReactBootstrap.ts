@@ -10,8 +10,8 @@ export default function withReactBootstrap(
 ) {
   /* package.json */
   const pkg = baseAstMap.get('package.json') as TObject;
-  pkg.devDependencies = {
-    ...pkg.devDependencies || {},
+  pkg.dependencies = {
+    ...pkg.dependencies || {},
     'react-bootstrap': '^2.9.2',
     bootstrap: '^5.3.2',
   };

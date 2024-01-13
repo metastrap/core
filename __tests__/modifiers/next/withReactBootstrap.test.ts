@@ -22,7 +22,7 @@ describe('modifiers/next/withReactBootstrap', () => {
   test('withReactBootstrap', () => {
     withReactBootstrap(baseAsTree);
     expect(
-      (baseAsTree.get('package.json') as Record<string, unknown>).devDependencies,
+      (baseAsTree.get('package.json') as Record<string, unknown>).dependencies,
     ).toMatchObject({
       bootstrap: expect.anything(),
       'react-bootstrap': expect.anything(),
